@@ -19,13 +19,13 @@ body {
     font-weight: 300;
     font-size: 16px;
     color: #555;
-    margin-left: 200px;
-    margin-right: 200px;
+    text-align: center;
+
 
     -webkit-font-smoothing: antialiased;
     -webkit-overflow-scrolling: touch;
 
-    margin-top: 70px;
+    margin-top: 10px;
 }
 
 /* Titles */
@@ -131,8 +131,8 @@ a:after {
 /* hello */
 #hello {
 	width: 100%;
-	padding-top: 250px;
-	padding-bottom: 250px;
+	padding-top: 150px;
+	padding-bottom: 50px;
 }
 
 #hello h1 {
