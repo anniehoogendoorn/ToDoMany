@@ -6,37 +6,40 @@
   </head>
   <body>
       <div class="container">
-          <div id="hello">
+          <div id="hello h2">
           <h1>{{ category.getName }}</h1>
       </div>
           {% if tasks is not empty %}
           <p>Here are the tasks:</p>
           <ul>
               {% for task in tasks %}
-                <li class="category"><b>{{ task.getDescription }}</b></li>
+                <li class="category"><h2 class="bubba">{{ task.getDescription }}</h2></li>
                 <li class="category"><h4>{{ task.getDate }}</h4></li>
               {% endfor %}
           </ul>
           {% endif %}
 
-          <h4>Add a task</h4>
+          <h2 id="hello h2">Add a task</h2>
 
-          <form action="/tasks" method="post">
-              <input id="category_id" type="hidden" name="category_id" value="{{ category.getId() }}">
 
-              <label for="description">Task Description</label>
-              <input type="text" name="description" id="description"> </br>
+          <div class="form-group">
+              <form action="/tasks" method="post">
+                  <input id="category_id" type="hidden" name="category_id" value="{{ category.getId() }}">
 
-              <label for="date">Date</label>
-              <input type="date" name="date" id="date">
-
-              <button type="submit">Add task</button>
-          </form>
-          <form action='/delete_tasks' method='post'>
-             <button type='submit' class="btn-info">Clear</button>
-          </form>
-
-       <p><a href='/'>Home</a></p>
+                  <label class="bubba" for="description">Task Description</label>
+                  <input type="text" name="description" id="description" class="form-inline"> </br>
+              </div>
+              <div class="form-group">
+                  <label class="bubba" for="date">Date</label>
+                  <input type="date" name="date" id="date" class="form-inline">
+            </div>
+                  <button type="submit">Add task</button>
+             </form>
+              <form action='/delete_tasks' method='post'>
+                 <button type='submit' class="btn-info">Clear</button>
+              </form>
+          </div>
+       <p><a class="bubba" href='/'>Home</a></p>
       </div>
   </body>
 </html>

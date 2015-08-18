@@ -56,7 +56,13 @@ p {
 
 .bubba {
     text-shadow: 2px 2px 2px #66391a;
-    color: #b2642e;
+    color: #fff;
+}
+
+.kelli {
+    text-shadow: 2px 2px 2px #66391a;
+    color: #fff;
+    font-weight:200px;
 }
 
 /* Links */
@@ -139,6 +145,7 @@ a:after {
 
 /* hello */
 #hello {
+
 	width: 100%;
 	padding-top: 150px;
 	padding-bottom: 50px;
@@ -148,7 +155,7 @@ a:after {
 	font-size: 90px;
 	font-weight: 700;
 	letter-spacing: 3px;
-	color: #74cfae;
+    color: #FF8F43;
 }
 
 #hello h2 {

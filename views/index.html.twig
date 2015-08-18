@@ -19,11 +19,11 @@
     <p>Here are all your categories:</p>
     <ul>
         {% for category in categories %}
-        <li class="category"><a href="/categories/{{ category.getId }}">{{ category.getName }}</a></li>
+        <li class="category hello"><a href="/categories/{{ category.getId }}">{{ category.getName }}</a></li>
         {% endfor %}
     </ul>
     {% else %}
-        <p>There are no categories yet!</p>
+        <p class="kelli">There are no categories yet!</p>
     {% endif %}
 
     <form action='/delete_categories' method='post'>
