@@ -4,20 +4,27 @@ class Task
     private $description;
     private $category_id;
     private $id;
+    private $date;
 
 
     //Constructors
-    function __construct($description, $id = null, $category_id)
+    function __construct($description, $id = null, $category_id, $date)
     {
         $this->description = $description;
         $this->id = $id;
         $this->category_id = $category_id;
+        $this->date = $date;
     }
 
     //Setters
     function setDescription($new_description)
     {
         $this->description = (string) $new_description;
+    }
+
+    function setDate($new_date)
+    {
+        $this->date = (string) $new_date;
     }
 
     //Getters
@@ -36,17 +43,22 @@ class Task
         return $this->category_id;
     }
 
+    function getDate()
+    {
+        return $this->date;
+    }
+
     //Save function
     function save()
     {
-      $GLOBALS['DB']->exec("INSERT INTO tasks (description, category_id) VALUES ('{$this->getDescription()}', {$this->getCategoryId()});");
+      $GLOBALS['DB']->exec("INSERT INTO tasks (description, category_id, date) VALUES ('{$this->getDescription()}', {$this->getCategoryId()}, '{$this->getDate()}');");
       $this->id = $GLOBALS['DB']->lastInsertId();
     }
 
     //Get All function
     static function getAll()
     {
-        $returned_tasks = $GLOBALS['DB']->query("SELECT * FROM tasks;");
+        $returned_tasks = $GLOBALS['DB']->query("SELECT * FROM tasks ORDER BY date;");
         $tasks = array();
         foreach($returned_tasks as $task) {
           $description = $task['description'];

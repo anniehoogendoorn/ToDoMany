@@ -12,6 +12,7 @@
       <ul>
           {% for task in tasks %}
             <li>{{ task.getDescription }}</li>
+            <li>{{ task.getDate }}</li>
           {% endfor %}
       </ul>
       {% endif %}
@@ -22,9 +23,15 @@
           <input id="category_id" type="hidden" name="category_id" value="{{ category.getId() }}">
 
           <label for="description">Task Description</label>
-          <input type="text" name="description" id="description">
+          <input type="text" name="description" id="description"> </br>
+
+          <label for="date">Date</label>
+          <input type="date" name="date" id="date">
 
           <button type="submit">Add task</button>
+      </form>
+      <form action='/delete_tasks' method='post'>
+         <button type='submit' class="btn-info">Clear</button>
       </form>
 
    <p><a href='/'>Home</a></p>

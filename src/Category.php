@@ -24,13 +24,14 @@
         function getTasks()
         {
             $tasks = array();
-            $returned_tasks = $GLOBALS['DB']->query("SELECT * FROM tasks WHERE category_id = {$this->getId()};");
+            $returned_tasks = $GLOBALS['DB']->query("SELECT * FROM tasks WHERE category_id = {$this->getId()} ORDER BY date;");
 
             foreach($returned_tasks as $task) {
                 $description = $task['description'];
                 $id = $task['id'];
                 $category_id = $task['category_id'];
-                $new_task= new Task($description, $id, $category_id);
+                $date = $task['date'];
+                $new_task= new Task($description, $id, $category_id, $date);
                 array_push($tasks, $new_task);
             }
 

@@ -23,7 +23,7 @@
             return $app['twig']->render('index.html.twig', array('categories' => Category::getAll()));
         });
 
-    
+
         $app->get("/categories/{id}", function($id) use ($app) {
           $category = Category::find($id);
 
@@ -34,7 +34,8 @@
         $app->post("/tasks", function() use ($app) {
             $description = $_POST['description'];
             $category_id = $_POST['category_id'];
-            $task = new Task($description, $id = null, $category_id);
+            $date = $_POST['date'];
+            $task = new Task($description, $id = null, $category_id, $date);
 
             $task->save();
             $category = Category::find($category_id);

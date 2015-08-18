@@ -50,6 +50,10 @@ p {
 	margin-top: 40px;
 }
 
+.category {
+    list-style: none;
+}
+
 /* Links */
 a {
     color: #f85c37;
