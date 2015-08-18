@@ -166,7 +166,7 @@
               $test_Task2->save();
 
               //Act
-              $result = Task::find($test_task->getId());
+              $result = Task::find($test_Task->getId());
 
               //Assert
               $this->assertEquals($test_Task, $result);

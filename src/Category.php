@@ -1,18 +1,40 @@
 <?php
+
+
     class Category
     {
         private $name;
         private $id;
 
+
+        //Constructors
         function __construct($name, $id = null)
         {
             $this->name = $name;
             $this->id = $id;
         }
 
+        //Setters
         function setName ($new_name)
         {
             $this->name = (string) $new_name;
+        }
+
+        //Getters
+        function getTasks()
+        {
+            $tasks = array();
+            $returned_tasks = $GLOBALS['DB']->query("SELECT * FROM tasks WHERE category_id = {$this->getId()};");
+
+            foreach($returned_tasks as $task) {
+                $description = $task['description'];
+                $id = $task['id'];
+                $category_id = $task['category_id'];
+                $new_task= new Task($description, $id, $category_id);
+                array_push($tasks, $new_task);
+            }
+
+            return $tasks;
         }
 
         function getName()
@@ -25,12 +47,14 @@
             return $this->id;
         }
 
+        //Save function
         function save()
         {
             $GLOBALS['DB']->exec("INSERT INTO categories (name) VALUES ('{$this->getName()}')");
             $this->id= $GLOBALS['DB']->lastInsertId();
         }
 
+        //Static functions
         static function getAll()
         {
             $returned_categories = $GLOBALS['DB']->query("SELECT * FROM categories;");
