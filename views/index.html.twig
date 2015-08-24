@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>To Do List</title>
+  </head>
+  <body>
+    <h1>Welcome to To Do List</h1>
+    <h4>Create a new Category: </h4>
+
+    <form action="/categories" method="post">
+        <label for="name" class= "bubba">Category name: </label>
+        <input type="text" name="name" id="name">
+
+        <button type="submit" class="btn-info">Add category!</button>
+    </form>
+
+    {% if categories is not empty %}
+    <p>Here are all your categories:</p>
+    <ul>
+        {% for category in categories %}
+        <li class="category hello"><a href="/categories/{{ category.getId }}">{{ category.getName }}</a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p class="kelli">There are no categories yet!</p>
+    {% endif %}
+
+    <form action='/delete_categories' method='post'>
+        <button type='submit'class="btn-info">Clear</button>
+    </form>
+
+  </body>
+</html>
