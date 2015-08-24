@@ -10,36 +10,32 @@
           <h1>{{ category.getName }}</h1>
       </div>
           {% if tasks is not empty %}
-          <p>Here are the tasks:</p>
+          <p>Here are the tasks for this category:</p>
           <ul>
               {% for task in tasks %}
                 <li class="category"><h2 class="bubba">{{ task.getDescription }}</h2></li>
-                <li class="category"><h4>{{ task.getDate }}</h4></li>
               {% endfor %}
           </ul>
           {% endif %}
 
-          <h2 id="hello h2">Add a task</h2>
+          <h2 id="hello h2">Add a task to this category:</h2>
 
 
           <div class="form-group">
-              <form action="/tasks" method="post">
-                  <input id="category_id" type="hidden" name="category_id" value="{{ category.getId() }}">
-
-                  <label class="bubba" for="description">Task Description</label>
-                  <input type="text" name="description" id="description" class="form-inline"> </br>
+              <form action="/add_tasks" method="post">
+                  <input id="category_id" type="hidden" name="category_id" value="{{ category.getId }}">
+                  <label for='task_id'>Select a task</label>
+                  <select id='task_id' name='task_id' type='text'>
+                      {% for task in all_tasks %}
+                        <option value="{{ task.getId }}"> {{ task.getDescription }} </option>
+                      {% endfor %}
+                  </select>
               </div>
-              <div class="form-group">
-                  <label class="bubba" for="date">Date</label>
-                  <input type="date" name="date" id="date" class="form-inline">
-            </div>
                   <button type="submit">Add task</button>
              </form>
-              <form action='/delete_tasks' method='post'>
-                 <button type='submit' class="btn-info">Clear</button>
-              </form>
-          </div>
-       <p><a class="bubba" href='/'>Home</a></p>
+
+             <p><a href="/categories/{{ category.getId }}/edit">Edit this category</a></p>
+             <p><a href='/'>Home</a></p>
       </div>
   </body>
 </html>
