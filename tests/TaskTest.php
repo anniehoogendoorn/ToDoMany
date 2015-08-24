@@ -43,7 +43,7 @@
             $test_task = new Task($description);
 
             //Act
-            $test_task->setDescription("Drink coffee."),
+            $test_task->setDescription("Drink coffee.");
             $result = $test_task->getDescription();
 
             //Assert
@@ -186,7 +186,7 @@
 
               $description2 = "Water the lawn";
               $id2 = 2;
-              $test_task2 = new Task($desciption, $id);
+              $test_task2 = new Task($description, $id);
               $test_task2->save();
 
               //Act

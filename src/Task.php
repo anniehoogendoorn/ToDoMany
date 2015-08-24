@@ -31,7 +31,7 @@ class Task
     //Save function
     function save()
     {
-      $GLOBALS['DB']->exec("INSERT INTO tasks (description) VALUES ('{$this->getDescription()}', {$this->getCategoryId()});");
+      $GLOBALS['DB']->exec("INSERT INTO tasks (description) VALUES ('{$this->getDescription()}');");
       $this->id = $GLOBALS['DB']->lastInsertId();
     }
 
