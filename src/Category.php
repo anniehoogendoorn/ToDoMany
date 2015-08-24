@@ -20,24 +20,6 @@
             $this->name = (string) $new_name;
         }
 
-        //Getters
-        function getTasks()
-        {
-            $tasks = array();
-            $returned_tasks = $GLOBALS['DB']->query("SELECT * FROM tasks WHERE category_id = {$this->getId()} ORDER BY date;");
-
-            foreach($returned_tasks as $task) {
-                $description = $task['description'];
-                $id = $task['id'];
-                $category_id = $task['category_id'];
-                $date = $task['date'];
-                $new_task= new Task($description, $id, $category_id, $date);
-                array_push($tasks, $new_task);
-            }
-
-            return $tasks;
-        }
-
         function getName()
         {
             return $this->name;
@@ -53,6 +35,17 @@
         {
             $GLOBALS['DB']->exec("INSERT INTO categories (name) VALUES ('{$this->getName()}')");
             $this->id= $GLOBALS['DB']->lastInsertId();
+        }
+
+        function update($new_name)
+        {
+          $GLOBALS['DB']->exec("UPDATE categories SET name = '{$new_name}' WHERE id = {$this->getId()};");
+          $this->setName($new_name);
+        }
+
+        function delete()
+        {
+          $GLOBALS['DB']->exec("DELETE FROM categories WHERE id = {$this->getId()};");
         }
 
         //Static functions
